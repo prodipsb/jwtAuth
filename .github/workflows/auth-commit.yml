@@ -31,7 +31,7 @@ jobs:
       - name: Make a commit
         run: |
           echo "Last commit $(date)" >> auth-commit-log.txt
-          git add auto-commit-log.txt
+          git add auth-commit-log.txt
           git commit -m "JWT Auth commit on $(date)" || exit 0
 
       - name: Push changes
