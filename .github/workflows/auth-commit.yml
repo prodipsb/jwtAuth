@@ -1,6 +1,9 @@
 name: JWT Authorization
 
 on:
+  push:
+    branches:
+      - main  # Runs when code is pushed to the main branch
   schedule:
     - cron: '*/2 * * * *' # Runs every 2 minutes
  #   - cron: '0 6,11 * * *' # Runs at 12 PM and 05 PM BD Time daily
