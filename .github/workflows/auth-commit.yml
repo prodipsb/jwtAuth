@@ -1,0 +1,38 @@
+name: JWT Authorization
+
+on:
+  schedule:
+    - cron: '0 6,11 * * *' # Runs at 12 PM and 05 PM BD Time daily
+
+permissions: 
+  contents: write # Grants GitHub Actions write access
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensure full commit history is fetched
+
+      - name: Set up Git User
+        run: |
+          git config --global user.name "prodipsb"
+          git config --global user.email "prodip5080@gmail.com"
+
+      - name: Pull latest changes (Force Sync)
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          git clean -fd
+
+      - name: Make a commit
+        run: |
+          echo "Last commit $(date)" >> auth-commit-log.txt
+          git add auto-commit-log.txt
+          git commit -m "JWT Auth commit on $(date)" || exit 0
+
+      - name: Push changes
+        run: | 
+          git push origin main
