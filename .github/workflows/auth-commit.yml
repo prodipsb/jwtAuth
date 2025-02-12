@@ -2,7 +2,8 @@ name: JWT Authorization
 
 on:
   schedule:
-    - cron: '0 6,11 * * *' # Runs at 12 PM and 05 PM BD Time daily
+    - cron: '*/2 * * * *' # Runs every 2 minutes
+ #   - cron: '0 6,11 * * *' # Runs at 12 PM and 05 PM BD Time daily
 
 permissions: 
   contents: write # Grants GitHub Actions write access
