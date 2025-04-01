@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Runs when code is pushed to the main branch
   schedule:
-    - cron: '0 6,11 * * *' # Runs at 12 PM and 05 PM BD Time daily
+      - cron: '0 6,11 * * 2-4'  # Runs at 12 PM & 5 PM BD Time (UTC+6), from Tuesday to Thursday
 
 permissions: 
   contents: write # Grants GitHub Actions write access
